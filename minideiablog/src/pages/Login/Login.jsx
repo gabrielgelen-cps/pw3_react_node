@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
-import styles from './Login.modules.css'
+import React, { useEffect, useState } from 'react'
+import styles from './Login.module.css'
 import { useAuthentication } from '../../hooks/useAuthentication'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-    const [email, setEmail] = setState()
-    const [password, setPassword] = setState()
-    const [error, setError] = setState()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const [error, setError] = useState()
 
     const { login, error: authError, loading } = useAuthentication()
     const navigate = useNavigate()
