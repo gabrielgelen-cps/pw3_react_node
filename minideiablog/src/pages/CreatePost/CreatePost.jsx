@@ -1,8 +1,8 @@
-import style from './CreatePost.module.css'
+import styles from './CreatePost.module.css'
 import { useState } from 'react'
 import { useInsertDocument } from '../../hooks/useInsertDocument'
 import { useNavigate } from 'react-router-dom'
-import banner from "../../../public/banner_home.png"
+// import banner from "../../../public/banner_home.png"
 import { useAuthValue } from '../../context/AuthContext'
 
 const CreatePost = () => {
@@ -20,7 +20,7 @@ const CreatePost = () => {
 
     const handlerSubmit = async(e) => {
         e.preventDefault()
-        setError('')
+        setFormError('')
        
         try{
             new URL(image)
@@ -65,7 +65,7 @@ const CreatePost = () => {
 
     return (
         <>
-            <div className={styles.create_post}>
+        <div className={styles.create_post}>
         <h2>Nova Postagem</h2>
         <p>Compartilhe sua experiência no mundo desenvolvedor</p>
         <form onSubmit={handlerSubmit}>
