@@ -1,22 +1,21 @@
 import { useEffect, useState } from 'react'
 import { db } from '../firebase/config'
 import { doc, getDoc } from 'firebase/firestore'
- 
-export const useFethDocument = (docCollection, id) => {
+
+export const useFetchDocument = (docCollection, id) => {
     const [document, setDocument] = useState(null)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(null)
- 
+
     useEffect(() => {
         const loadDocument = async () => {
             setLoading(true)
- 
-            try{
+            try {
                 const docRef = await doc(db, docCollection, id)
                 const docSnap = await getDoc(docRef)
- 
+
                 setDocument(docSnap.data())
-            }catch(error){
+            } catch (error) {
                 console.error(error)
                 setError(error.message)
             }
@@ -24,10 +23,10 @@ export const useFethDocument = (docCollection, id) => {
         }
         loadDocument()
     }, [docCollection, id])
- 
+
     console.log(document)
- 
-    return{
+
+    return {
         document,
         loading,
         error
